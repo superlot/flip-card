@@ -4,7 +4,7 @@ body {
   color: #fff;
 }
 .container {
-  width: 912px;
+  width: @imageWidth;
   margin: 0px auto;
 }
 /* Flip Effect from http://davidwalsh.name/css-flip */
