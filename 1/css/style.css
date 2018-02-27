@@ -2,70 +2,64 @@
 @imageHeight: 340px;
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #222;
   color: #fff;
 }
 .container {
-  width: 100%;
+	width: @imageWidth;
   margin: 0px auto;
 }
+
 /* Flip Effect from http://davidwalsh.name/css-flip */
 /* entire container, keeps perspective */
 .flip-container {
-  -webkit-perspective: 1000;
-          perspective: 1000;
+	perspective: 1000;
 }
 /* flip the pane when hovered */
 .flip-container.hover .flipper {
-  -webkit-transform: rotateX(180deg);
-          transform: rotateX(180deg);
+	transform: rotateX(180deg);
 }
-.flip-container,
-.front,
-.back,
-img {
-  width: 100%;
-  height: auto;
+
+.flip-container, .front, .back, img {
+	width: @imageWidth;
+	height: @imageHeight;
 }
+
 /* flip speed goes here */
 .flipper {
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-  -webkit-transform-origin: 100% 170px;
-          transform-origin: 100% 170px;
-  -webkit-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
-          transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
-  position: relative;
+	transition: 0.6s;
+	transform-style: preserve-3d;
+	transform-origin: 100% @imageHeight/2;
+  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.000);
+	position: relative;
 }
+
 /* hide back of pane during swap */
-.front,
-.back {
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
+.front, .back {
+	backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
 }
+
 /* front pane, placed above back */
 .front {
-  z-index: 2;
-  /* for firefox 31 */
-  -webkit-transform: rotateX(0deg);
-          transform: rotateX(0deg);
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateX(0deg);
 }
 /* back, initially hidden pane */
 .back {
-  -webkit-transform: rotateX(180deg);
-          transform: rotateX(180deg);
+	transform: rotateX(180deg);
 }
+
+
 /* leaflet map */
-#map {
-  width: 512px;
-  height: 340px;
-  background-color: #999;
+#map { 
+	width: @imageWidth; 
+	height: @imageHeight;
+	background-color: #999;
 }
 .title-and-button {
   position: relative;
@@ -73,42 +67,44 @@ img {
 }
 /* toggle button */
 .toggle-btn {
-  position: absolute;
+	position: absolute;
   bottom: 0px;
   right: 0px;
-  width: 130px;
-  padding: 12px 18px;
-  border: 1px solid #dedede;
-  border-bottom-width: 0px;
-  background-color: #efefef;
-  color: #333;
-  border-radius: 3px 3px 0 0;
+	width: 100px;
+	padding: 12px 18px;
+	border: 1px solid #dedede;
+	border-bottom-width: 0px;
+	background-color: #efefef;
+	color: #333;
+	border-radius: 3px 3px 0 0;
   font-size: 15px;
   letter-spacing: 0.05em;
   float: right;
+  
+  &:active {
+	  background-color: #dedede;
+  }
 }
-.toggle-btn:active {
-  background-color: #dedede;
-}
+
 /* pin based on https://codepen.io/andreasstorm/pen/ClguF */
 .pin {
   display: inline-block;
-  position: absolute;
-  top: 7px;
-  right: 11px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50% 50% 50% 0;
-  background: #156A7E;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-}
-.pin:after {
-  content: '';
-  width: 10px;
-  height: 10px;
-  margin: 5px 0 0 5px;
-  background: #fff;
-  position: absolute;
-  border-radius: 50%;
+	position: absolute;
+	top: 7px;
+	right: 20px;
+	width: 20px;
+	height: 20px;
+	border-radius: 20% 20% 20% 0;
+	background: #156A7E;
+	transform: rotate(-45deg);
+
+  &:after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    margin: 5px 0 0 5px;
+    background: #fff;
+    position: absolute;
+    border-radius: 50%;
+  }
 }
