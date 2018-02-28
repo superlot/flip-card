@@ -1,7 +1,7 @@
 
 
 <!--
-Copyright (c) 2018 by Sergey (https://codepen.io/superlot/pen/ddwzRB)
+Copyright (c) 2018 by Sergey (https://codepen.io/superlot/pen/bLOQaX)
 
 
 Fork of an original work by Devin Argenta (https://codepen.io/devinargenta/pen/FiedL)
